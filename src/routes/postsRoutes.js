@@ -1,5 +1,5 @@
 import express from "express";
-import { listarPosts, postarNovoPost, uploadImagem, atualizarNovoPost } from "../controllers/postsController.js";
+import { listarPosts, postarNovoPost, uploadImagem, atualizarNovoPost, deletarNovoPost } from "../controllers/postsController.js";
 import multer from "multer";
 import cors from "cors";
 
@@ -28,8 +28,8 @@ const routes  = (app) => {
     app.get("/posts", listarPosts);  
     app.post("/posts", postarNovoPost);
     app.post("/upload", upload.single("imagem"),uploadImagem);
-    app.put("/upload/:id",atualizarNovoPost)
-
+    app.put("/upload/:id",atualizarNovoPost);
+    app.delete("/posts/:id", deletarNovoPost);
 
 }
 

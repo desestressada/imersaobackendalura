@@ -63,3 +63,14 @@ export async function atualizarNovoPost(req, res){
     }
 
 }
+
+export async function deletarNovoPost(req, res) {
+    const idDel = req.params;
+    try {
+        const postDeletado = await deletarPost(idDel);
+        res.status(200).json({ mensagem: 'Post deletado com sucesso' });
+    } catch(erro){
+        console.error(erro.message);
+        res.status(500).json({"Erro":"Falha na requisição"})
+    }
+}
